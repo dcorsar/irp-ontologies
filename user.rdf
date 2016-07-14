@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:terms="http://vocab.org/transit/terms/"
+    xmlns="http://www.w3id.org/abdn/irp/user/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:devices="http://www.w3id.org/abdn/irp/devices/"
+    xmlns:transport="http://www.w3id.org/abdn/irp/transport/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xml:base="http://www.w3id.org/abdn/irp/user/">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.w3id.org/abdn/irp/transport.owl"/>
+    <owl:imports rdf:resource="http://vocab.org/transit/terms/"/>
+    <owl:imports rdf:resource="http://rdfs.org/sioc/ns"/>
+    <owl:imports rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos"/>
+    <owl:imports rdf:resource="http://www.w3id.org/abdn/irp/devices.owl"/>
+    <owl:imports rdf:resource="http://www.w3id.org/abdn/irp/infrastructure.owl"/>
+     <rdfs:label rdf:datatype="xsd:string">The IRP User ontology</rdfs:label>
+        <dc:date rdf:datatype="xsd:date">2014-11-12</dc:date>
+        <dc:creator rdf:datatype="xsd:string">David Corsar</dc:creator>
+        <dc:rights rdf:datatype="xsd:string">Licensed under the Lesser General Public Licence (LGPL) Version 2.1 (http://www.gnu.org/licenses/lgpl-2.1.html)</dc:rights>
+        <dc:creator rdf:datatype="xsd:string">Milan Markovic</dc:creator>
+        <owl:versionInfo rdf:datatype="xsd:string">Revision: 1.0.1</owl:versionInfo>
+        <dc:title rdf:datatype="xsd:string">The IRP User ontology</dc:title>
+        <dc:description rdf:datatype="xsd:string">The IRP User Ontology is a vocabulary for describing users of the GetThere software, developed during the Informed Rural Passenger project at the dot.rural Digital Economy Hub, University of Aberdeen, UK uspported by the award made by the RCUK Digital Economy programme; award reference: EP/G066051/1.  The ontology is designed to integrate user profiles with journeys they conduct on public transport.</dc:description>
+        <rdfs:comment rdf:datatype="xsd:string">The IRP User Ontology is a vocabulary for describing users of the GetThere software.</rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://www.w3id.org/abdn/irp/user/Journey">
+  <rdfs:comment rdf:datatype="xsd:string">A journey from an origin to destination completed using public transport.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Journey</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <rdf:Description rdf:about="http://rdfs.org/sioc/ns#UserAccount">
+            <rdfs:subClassOf>
+              <owl:Restriction>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                >1</owl:cardinality>
+                <owl:onProperty>
+                  <owl:DatatypeProperty rdf:about="http://www.w3id.org/abdn/irp/user/password"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </rdfs:subClassOf>
+          </rdf:Description>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.w3id.org/abdn/irp/user/user"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3id.org/abdn/irp/user/BusAlert">
+ <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+  >Bus Alert</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+  >Details of a scenario regarding a bus service that the user wishes to receive notifications about, such as estimated time of arrival for a particular bus service.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.w3id.org/abdn/irp/transport/line"/>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <rdf:Description rdf:about="http://vocab.org/transit/terms/Service"/>
+              <rdf:Description rdf:about="http://vocab.org/transit/terms/Route"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.w3id.org/abdn/irp/transport/line"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+       <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3id.org/abdn/irp/user/Alert"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3id.org/abdn/irp/user/BusJourney">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+  >A journey from an origin to destination completed using a bus service.</rdfs:comment>
+
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+  >Bus Journey</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+        <owl:onProperty rdf:resource="http://vocab.org/transit/terms/direction"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.w3id.org/abdn/irp/transport/line"/>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <rdf:Description rdf:about="http://vocab.org/transit/terms/Route"/>
+              <rdf:Description rdf:about="http://www.w3id.org/abdn/irp/transport/Service"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.w3id.org/abdn/irp/transport/line"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+       <rdfs:subClassOf rdf:resource="http://www.w3id.org/abdn/irp/user/Journey"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3id.org/abdn/irp/user/Feedback">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+  >Feedback from a user providing comments, desired features, etc. of the GetThere system.</rdfs:comment>
+      <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3id.org/abdn/irp/user/Journey"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.w3id.org/abdn/irp/user/onJourney"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+        <owl:onProperty rdf:resource="http://rdfs.org/sioc/ns#content"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+        <owl:onProperty rdf:resource="http://rdfs.org/sioc/ns#has_creator"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Feedback</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3id.org/abdn/irp/user/Alert">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+  >Details of a scenario that the user wishes to receive notifications about, such as estimated time of arrival for a particular bus service.</rdfs:comment>
+     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Alert.</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#long"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://vocab.org/transit/terms/bankHolidays"/>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://vocab.org/transit/terms/thursday"/>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#lat"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://vocab.org/transit/terms/wednesday"/>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://vocab.org/transit/terms/tuesday"/>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://vocab.org/transit/terms/sunday"/>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.w3id.org/abdn/irp/user/finishes"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://vocab.org/transit/terms/saturday"/>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://vocab.org/transit/terms/direction"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://vocab.org/transit/terms/friday"/>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://rdfs.org/sioc/ns#modified_at"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://vocab.org/transit/terms/monday"/>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.w3id.org/abdn/irp/user/user">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >user</rdfs:label>
+	<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A user of the GetThere system.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3id.org/abdn/irp/user/onJourney">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >on journey</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Relationship between a user and a journey they are undertaking</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3id.org/abdn/irp/user/withDevice">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Relationships between a user and a (mobile) device they are using.</rdfs:label>
+  </owl:ObjectProperty>
+  <rdf:Property rdf:about="http://www.w3id.org/abdn/irp/user/authToken">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >auth token</rdfs:label>
+	<rdfs:comment rdf:datatype="xsd:string">Token used for authentication of data submitted by users.</rdfs:comment>
+  </rdf:Property>
+  <owl:DatatypeProperty rdf:about="http://www.w3id.org/abdn/irp/user/password">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >password</rdfs:label>
+	<rdfs:comment rdf:datatype="xsd:string">User's password, ideally encoded securely.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.w3id.org/abdn/irp/user/finishes">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >finish time</rdfs:label>
+	<rdfs:comment rdf:datatype="xsd:string">Expected finish/end time of a journey</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#time"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.w3id.org/abdn/irp/user/starts">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >start time</rdfs:label>
+	<rdfs:comment rdf:datatype="xsd:string">Expected start time of a journey</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#time"/>
+  </owl:DatatypeProperty>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->
