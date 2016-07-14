@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:transit="http://vocab.org/transit/terms/"
+    xmlns:naptan="http://transport.data.gov.uk/def/naptan/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:inf="http://www.w3id.org/abdn/irp/infrastructure/"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://www.w3id.org/abdn/irp/transport/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:dc="http://purl.org/dc/terms/"
+  xml:base="http://www.w3id.org/abdn/irp/transport/">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.w3id.org/abdn/irp/infrastructure.owl"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+    <owl:imports rdf:resource="http://vocab.org/transit/terms/"/>
+    <rdfs:label rdf:datatype="xsd:string">The IRP Transport ontology</rdfs:label>
+        <dc:date rdf:datatype="xsd:date">2014-11-12</dc:date>
+        <dc:creator rdf:datatype="xsd:string">David Corsar</dc:creator>
+        <dc:rights rdf:datatype="xsd:string">Licensed under the Lesser General Public Licence (LGPL) Version 2.1 (http://www.gnu.org/licenses/lgpl-2.1.html)</dc:rights>
+        <dc:creator rdf:datatype="xsd:string">Milan Markovic</dc:creator>
+        <owl:versionInfo rdf:datatype="xsd:string">Revision: 1.0.1</owl:versionInfo>
+        <dc:title rdf:datatype="xsd:string">The IRP Transport ontology</dc:title>
+        <dc:description rdf:datatype="xsd:string">The IRP Transport Ontology is a vocabulary for describing aspects of public transport services and maps of their routes, developed during the Informed Rural Passenger project at the dot.rural Digital Economy Hub, University of Aberdeen, UK supported by the award made by the RCUK Digital Economy programme; award reference: EP/G066051/1.</dc:description>
+        <rdfs:comment rdf:datatype="xsd:string">The IRP Transport Ontology is a vocabulary for describing aspects of public transport services and maps of their routes.</rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://www.w3id.org/abdn/irp/transport/ServiceMapNode">
+    <rdfs:subClassOf rdf:resource="http://linkedgeodata.org/ontology/Node"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Service Map Node</rdfs:label>
+	<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A service map consists of a set of Nodes that refer to geo points specifying the geo-location of the node, and a sequenceNumber for ordering the nodes in sequence along the trip.</rdfs:comment>
+    <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3id.org/abdn/irp/infrastructure/sequenceNumber"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3id.org/abdn/irp/infrastructure/hasPoint"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.w3id.org/abdn/irp/infrastructure/GeoPoint"/>
+            </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3id.org/abdn/irp/transport/BusServiceMap">
+    <rdfs:comment rdf:datatype="xsd:string">Provides map information for a bus service.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bus service map</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3id.org/abdn/irp/transport/Map"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3id.org/abdn/irp/transport/BusRouteMap">
+     <rdfs:comment rdf:datatype="xsd:string">Provides map information for a bus route.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bus route map</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3id.org/abdn/irp/transport/Map"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3id.org/abdn/irp/transport/BusRoutePoint">
+    <rdfs:comment rdf:datatype="xsd:string">A point along a bus route.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3id.org/abdn/irp/transport/RoutePoint"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bus Route point</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3id.org/abdn/irp/transport/Map">
+    <rdfs:comment rdf:datatype="xsd:string">Represents information about the physical journey that a public transport service will undertake, in terms of expected route of travel.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.w3id.org/abdn/irp/transport/hasPoints"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >2</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Map</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3id.org/abdn/irp/transport/RoutePoint"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.w3id.org/abdn/irp/transport/hasPoints"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3id.org/abdn/irp/transport/VirtualStopTime">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Virtual stop time</rdfs:label>
+	<rdfs:comment rdf:datatype="xsd:string">Estimated timing points along a public transport trip, typically used to indicate expected time and location details for a bus between two fixed stops, calculated from the associated schedule data.</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.w3id.org/abdn/irp/transport/service">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >service</rdfs:label>
+	<rdfs:comment rdf:datatype="xsd:string">Defines a relationship of undefined type between an entity and a public transport service.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3id.org/abdn/irp/transport/hasPoints">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Points</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3id.org/abdn/irp/transport/routeMap">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >route map</rdfs:label>
+  </owl:ObjectProperty>
+  <rdf:Property rdf:about="http://www.w3id.org/abdn/irp/transport/line">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >line</rdfs:label>
+	<rdfs:comment rdf:datatype="xsd:string">Provides a relationship between an entity and public transport service or route (i.e. line).</rdfs:comment>
+  </rdf:Property>
+  <owl:ObjectProperty rdf:about="http://www.w3id.org/abdn/irp/transport/hasNode">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has node</rdfs:label>
+	        <rdfs:comment rdf:datatype="xsd:string">This property is used to link details of maps to nodes (typically from linked geo data).</rdfs:comment>
+  </owl:ObjectProperty>
+
+  <rdf:Description rdf:about="http://vocab.org/transit/terms/Route">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.w3id.org/abdn/irp/transport/routeMap"/>
+        <owl:allValuesFrom rdf:resource="http://www.w3id.org/abdn/irp/transport/RouteMap"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->
