@@ -1,3 +1,5 @@
+/* Style for a "Recommendation" */
+
 /*
    Copyright 1997-2003 W3C (MIT, ERCIM, Keio). All Rights Reserved.
    The following software licensing rules apply:
@@ -78,3 +80,6 @@ ul.toc, ol.toc {
   pre { speak-punctuation: code } 
 }
 
+body {
+  background-image: url(http://lode.sourceforge.net/img/LODELogo.png);
+}

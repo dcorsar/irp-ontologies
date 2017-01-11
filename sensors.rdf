@@ -134,16 +134,7 @@
     
 
 
-    <!-- http://org.semanticweb.owlapi/error#Error1 -->
 
-    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error1"/>
-    
-
-
-    <!-- http://org.semanticweb.owlapi/error#Error2 -->
-
-    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error2"/>
-    
 
 
     <!-- http://purl.oclc.org/NET/muo/muo#UnitOfMeasurement -->
@@ -263,9 +254,7 @@
     <!-- http://www.w3id.org/abdn/irp/sensors/LocationDeviceValue -->
 
     <owl:Class rdf:about="http://www.w3id.org/abdn/irp/sensors/LocationDeviceValue">
-        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error1"/>
-        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error2"/>
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/abdn/irp/sensors/LocationValue"/>
+         <rdfs:subClassOf rdf:resource="http://www.w3id.org/abdn/irp/sensors/LocationValue"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location device value</rdfs:label>
         <skos:prefLabel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Location device value</skos:prefLabel>
     </owl:Class>
