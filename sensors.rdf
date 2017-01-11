@@ -3,7 +3,6 @@
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:user="http://www.w3id.org/abdn/irp/user/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-    xmlns:j.0="http://qudt.org/schema/qudt#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dc="http://purl.org/dc/terms/"
     xmlns:spatialrelations="http://data.ordnancesurvey.co.uk/ontology/spatialrelations/"
@@ -15,8 +14,7 @@
   xml:base="http://www.w3id.org/abdn/irp/sensors/">
   <owl:Ontology rdf:about="">
     <dc:title rdf:datatype="xsd:string">The IRP Sensors ontology</dc:title>
-    <owl:imports rdf:resource="http://qudt.org/schema/qudt"/>
-    <dc:date rdf:datatype="xsd:date">2014-11-12</dc:date>
+     <dc:date rdf:datatype="xsd:date">2014-11-12</dc:date>
     <dc:creator rdf:datatype="xsd:string">Milan Markovic</dc:creator>
     <dc:rights rdf:datatype="xsd:string">Licensed under the Lesser General Public Licence (LGPL) Version 2.1 (http://www.gnu.org/licenses/lgpl-2.1.html)</dc:rights>
     <rdfs:comment rdf:datatype="xsd:string">The IRP Sensors Ontology is a vocabulary for describing mobile devices and their (location) sensors.</rdfs:comment>
@@ -262,10 +260,6 @@
     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >meters per second</rdfs:label>
   </UnitOf-speed>
-  <j.0:numericUnion rdf:about="http://www.w3id.org/abdn/irp/sensors/numericUnion_1">
-    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >numeric union 1</rdfs:label>
-  </j.0:numericUnion>
   <AndroidLocationSensing rdf:about="http://www.w3id.org/abdn/irp/sensors/AndroidPassiveLocationSensing">
     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Android passive location sensing</rdfs:label>
@@ -277,10 +271,6 @@
   <rdf:Description rdf:about="http://www.w3id.org/abdn/irp/devices/AndroidMobileDevice">
     <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#Platform"/>
   </rdf:Description>
-  <j.0:Quantity rdf:about="http://www.w3id.org/abdn/irp/sensors/Quantity_1">
-    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Quantity 1</rdfs:label>
-  </j.0:Quantity>
   <AndroidLocationSensing rdf:about="http://www.w3id.org/abdn/irp/sensors/AndroidGPSLocationSensing">
     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Android GPSLocation sensing</rdfs:label>
@@ -288,10 +278,6 @@
   <rdf:Description rdf:about="http://www.w3id.org/abdn/irp/devices/iPhone">
     <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#Platform"/>
   </rdf:Description>
-  <j.0:QuantityValue rdf:about="http://www.w3id.org/abdn/irp/sensors/QuantityValue_1">
-    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Quantity value 1</rdfs:label>
-  </j.0:QuantityValue>
   <ssn:Property rdf:about="http://www.w3id.org/abdn/irp/sensors/location">
     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >location</rdfs:label>
